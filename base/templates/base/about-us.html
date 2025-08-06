@@ -1,0 +1,210 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+<style>
+    .background-image {
+        background-image: url("https://websitedemos.net/language-tutors-02/wp-content/uploads/sites/700/2020/09/bg-03-free-img.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        margin-top: -100px;
+        z-index: -1;
+    }
+    .tagline {
+        text-align: center;
+        color: white;
+        height: calc(60vh - 50px);
+        background: #000000;
+        background: linear-gradient(180deg,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, .6) 60%, rgba(0, 0, 0, .9) 90%);
+        position: relative;
+
+        /* > div {
+            position: absolute;
+            bottom: 50%;
+            left: 0;right: 0;
+        } */
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+            font-weight: 200;
+        }
+        h1 {
+            font-size: 5rem;
+            width: 60vw;
+            margin: auto;
+            font-weight: 100;
+            b {
+                text-decoration: underline;
+            }
+        }
+        h3 {
+            font-size: 2rem;
+            width: 60vw;
+            max-width: 800px;
+            min-width: 300px;
+            margin: auto;
+            margin-top: 2rem;
+        }
+    }
+    .container {
+        background-color: var(--color-background);
+        position: relative;
+        /* padding: 5rem 0; */
+        .gap {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 5rem 6rem;
+        }
+        h6 {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        h2 {
+            width: 60vw;
+            min-width: 300px;
+            margin: auto;
+            font-size: 3rem;
+            color: var(--color-dark);
+        }
+    }
+
+    .container.container-bg-image {
+        &::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: url("https://websitedemos.net/language-tutors-02/wp-content/uploads/sites/700/2020/09/bg-overlay-01-free-img.png");
+            opacity: .05;
+            z-index: 0;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+        &.right::before {
+            transform: scaleX(-1) scaleY(-1);
+            left: 10%;
+        }
+    }
+
+    #main-top .gap {
+        padding: 4rem;
+        display: grid;
+        gap: 2rem;
+
+        .break-line {
+            display: block;
+            width: 80px;
+            border: 1px solid var(--color-dark);
+            margin: auto;
+        }
+
+        #about-us {
+            text-align: center;
+            display: contents;
+        }
+        p {
+            font-size: 1rem;width: 800px;margin: auto;line-height: 1.8;
+        }
+    }
+
+    .vision {
+        display: flex;
+        width: 75vw;
+        column-gap: 100px;
+        margin: auto;
+        flex-wrap: wrap;
+        
+        > div {
+            flex: 1;
+        }
+        h6 {
+            text-align: left;
+        }
+        h3 {
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width:900px) {
+        .tagline {
+            h3 {
+                width: auto;
+                font-size: 1.5rem;
+                padding: 0 1rem;
+            }
+        }
+        .container {
+            h2 {
+                font-size: 2rem;
+                width: auto;
+            }
+            .gap {
+                padding: 2rem 1rem;
+            }
+        }
+        .vision {
+            width: auto;
+            row-gap: 3rem;
+            h3 {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                min-width: 300px
+            }
+        }
+        .reg-open-btn {
+            margin-top: 2rem;
+        }
+        #main-top .gap {
+            padding: 2rem 1rem;
+            p {
+                width: auto;
+            }
+        }
+    }
+</style>
+<div id="content">
+    <div class="background-image"></div>
+    <div class="tagline">
+        <div style="padding-top: 2rem;">
+            <h1>ABOUT</h1>
+            <h3>We are a community of tutors that provide personalized home tuitions available in both offline and online mode.</h3>
+        </div>
+    </div>
+    <div class="container" id="main-top">
+        <div class="gap">
+            <div id="about-us">
+                <h6 class="text-primary">About us</h6>
+                <h2>We provide you with expert teachers for each course you select, with personalized schedule tailored for the student.</h2>
+            </div>
+            <div class="break-line"></div>
+            <p>We're not a big, faceless tutoring platform — we're real people who care about helping students connect with the right tutors. Our site is a simple way to reach out and let us know what you need. From there, we personally match you with a skilled tutor who fits your goals, schedule, and learning style. No algorithms, no guesswork — just a human touch and great results.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gap">
+            <div class="vision">
+                <div id="our-vision">
+                    <h6 class="text-primary">Our Vision</h6>
+                    <h3>To make quality, personalized learning accessible to every student — not through complicated tech, but through real connections with dedicated tutors who care.</h3>
+                </div>
+                <div id="our-mission">
+                    <h6 class="text-primary">Our Mission</h6>
+                    <h3>To bridge the gap between students and the right tutors by understanding individual needs, curating quality matches, and supporting academic success with a personal, hands-on approach.</h3>
+                </div>
+            </div>
+            <button class="reg-open-btn">Register Now &nbsp;<i class="fa fa-arrow-right"></i></button>
+        </div>
+    </div>
+</div>
+{% endblock %}

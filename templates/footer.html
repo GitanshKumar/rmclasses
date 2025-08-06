@@ -1,0 +1,98 @@
+<style>
+    footer {
+        background-color: var(--color-dark);
+        color: white;
+
+        .menus-container {
+            padding: 4rem;
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            .menu {
+                flex: 1;
+
+                .menu-title {
+                    font-size: 1.2rem;
+                    color: var(--color-info);
+                    margin-bottom: 1.5rem;
+                }
+                .menu-items {
+                    font-size: 1rem;
+                }
+                .menu-item {
+                    padding: .25rem 0;
+                    margin: .25rem 0;
+
+                    i {
+                        width: 2rem;
+                        color: var(--color-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width:600px) {
+        footer {
+            .menus-container {
+                padding: 2rem 1rem;
+
+                .menu {
+                    flex: unset;
+                }
+            }
+        }
+    }
+</style>
+
+
+<footer>
+    <div class="gap">
+        <div class="menus-container">
+            <div class="menu">
+                <div class="menu-title">About us</div>
+                <div class="menu-items">
+                    <div class="menu-item">How it works</div>
+                    <div class="menu-item">Become a tutor</div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-title">Subjects</div>
+                <div class="menu-items">
+                    <div class="menu-item">Math</div>
+                    <div class="menu-item">Accounts</div>
+                    <div class="menu-item">Economics</div>
+                    <div class="menu-item">Science</div>
+                    <div class="menu-item">Social studies</div>
+                    <div class="menu-item">English</div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-title">Classes</div>
+                <div class="menu-items">
+                    <div class="menu-item">6th to 10th Standard</div>
+                    <div class="menu-item">11th to 12th Standard</div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-title">Follow Us</div>
+                <div class="menu-items">
+                    <div class="menu-item"><i class="fa-brands fa-facebook"></i>Facebook</div>
+                    <div class="menu-item"><i class="fa-brands fa-x-twitter"></i>Twitter</div>
+                    <div class="menu-item"><i class="fa-brands fa-youtube"></i>Youtube</div>
+                    <div class="menu-item"><i class="fa-brands fa-instagram"></i>Instagram</div>
+                    <div class="menu-item"><i class="fa-brands fa-linkedin-in"></i>LinkedIn</div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="menu-title" id="contact-us">Contact</div>
+                <div class="menu-items">
+                    <div class="menu-item">+91 - 12345-67890</div>
+                    <div class="menu-item"><i class="fa-solid fa-address-book"></i>123, East Delhi - 123456, India</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

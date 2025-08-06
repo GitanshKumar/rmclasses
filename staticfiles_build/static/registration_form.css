@@ -1,0 +1,88 @@
+.panel-bg {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+
+    &.open {
+        background-color: rgba(0,0,0,0.4);
+        pointer-events: all;
+    }
+}
+
+.registration-panel {
+    position: absolute;
+    right: -100%;
+    width: 350px;
+    height: 100vh;
+    overflow: auto;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow);
+    border-left: 2px solid var(--color-light);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.panel-bg.open .registration-panel {
+    right: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0 .5rem;
+    font-size: 24px;
+    background-color: var(--color-background);
+    cursor: pointer;
+    color: var(--color-dark);
+
+    &:hover {
+        background-color: rgba(0,0,0,0.1);
+    }
+}
+
+.registration-form {
+    display: grid;
+    gap: .5rem;
+}
+
+.registration-form h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.registration-form label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.registration-form input,
+.registration-form textarea,
+.registration-form select {
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-btn,
+.open-btn {
+    margin: auto;
+    border-radius: 4px;
+    padding: .5rem 2rem;
+    font-size: 1rem;
+}
+
+@media (max-width:450px) {
+    .registration-panel {
+        width: 100vw;
+        
+    }
+}

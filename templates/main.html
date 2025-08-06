@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    
+    <script src="https://kit.fontawesome.com/b59e1242f9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    {% block content %}
+    {% endblock %}
+    
+    {% block script %}
+    {% endblock %}
+
+    <div id="server-messages" style="display: none;">
+        {% for msg in messages %}
+        <div data-tags="{{msg.tags}}">{{msg}}</div>
+        {% endfor %}
+    </div>
+    
+    {% include 'footer.html' %}
+    {% include 'registrationForm.html' %}
+
+    <script>
+        const side_menu_toggle = document.querySelector('.nav-side-menu');
+        const close_side = document.querySelector('#close-nav-side');
+        const nav_menu = document.querySelector('#nav-menu');
+        
+        close_side.addEventListener('click', () => {
+            nav_menu.classList.remove('active');
+        })
+
+        side_menu_toggle.addEventListener('click', () => {
+            nav_menu.classList.add('active');
+        })
+    </script>
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        document.querySelectorAll('#server-messages > div').forEach((msg) => {
+            Toast.fire({
+                icon: msg.dataset.tags,
+                title: msg.innerHTML
+            });
+        })
+    </script>
+    <script>
+        function runOncePerSession(key, fn) {
+            if (!sessionStorage.getItem(key)) {
+                fn();
+                sessionStorage.setItem(key, 'executed');
+            }
+        }
+
+        function greetUser() {
+            alert("Welcome! This will only show once per session.");
+        }
+
+        runOncePerSession('popOutForm', popOutRegistrationForm);
+
+    </script>
+</body>
+</html>

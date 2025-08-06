@@ -1,0 +1,64 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'registration_form.css' %}"> <!-- Include CSS -->
+
+
+<div class="panel-bg" id="panel-bg">
+    <div id="registration-panel" class="registration-panel">
+        <button id="close-btn" class="close-btn outline">&times;</button>
+        <div class="logo" style="width: 90px;height: 90px;">
+            <img src="{% static 'images/logo.png' %}" style="width: 100%;height: 100%;object-fit: cover;" alt="">
+        </div>
+        <form method="post" action="{% url 'register' %}" class="registration-form">
+            {% csrf_token %}
+            <h2 style="font-size: 1.5rem;">Register</h2>
+            <p style="font-size: 1.2rem;">Get the best tutors for you now!</p>
+        
+            <label for="id_name">Name</label>
+            <input type="text" id="id_name" name="name" placeholder="Your full name" required>
+        
+            <label for="id_email">Email</label>
+            <input type="email" id="id_email" name="email" placeholder="you@example.com" required>
+            
+            <label for="id_contact">Contact</label>
+            <input type="number" id="id_contact" name="contact" placeholder="0123456789" required>
+        
+            <label for="id_course">Course</label>
+            <select id="id_course" name="course" required>
+                <option value="" disabled selected>Select your course</option>
+                {% for course in courses %}
+                <option value="{{course.id}}">{{course.name}}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="id_class">Class</label>
+            <select id="id_class" name="class" required>
+                <option value="" disabled selected>Select your class</option>
+                {% for class in classes %}
+                <option value="{{class.id}}">{{class.name}}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="id_class">Query</label>
+            <textarea id="id_query" name="query" rows="5"></textarea>
+        
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const panel = document.getElementById('registration-panel');
+    const panelBG = document.getElementById('panel-bg');
+    const firstField = document.getElementById('id_name');
+
+    function popOutRegistrationForm() {
+        panelBG.classList.add('open');
+        setTimeout(() => firstField.focus(), 300);    
+    }
+    document.querySelectorAll('.reg-open-btn').forEach((btn) => {
+        btn.addEventListener('click', popOutRegistrationForm)
+    })
+    document.getElementById('close-btn').addEventListener('click', () => {
+        panelBG.classList.remove('open');
+    });
+</script>

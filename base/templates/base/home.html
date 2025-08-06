@@ -1,0 +1,522 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<style>
+    .background-image {
+        background-image: url("https://websitedemos.net/language-tutors-02/wp-content/uploads/sites/700/2020/09/bg-03-free-img.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        margin-top: -100px;
+        z-index: -1;
+    }
+
+    .tagline {
+        text-align: center;
+        color: white;
+        min-height: 650px;
+        height: calc(100vh - 50px);
+        background: #000000;
+        background: linear-gradient(180deg,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, .6) 60%, rgba(0, 0, 0, .9) 90%);
+        position: relative;
+
+        > div {
+            position: absolute;
+            bottom: 25%;
+            left: 0;right: 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+            font-weight: 200;
+        }
+        h1 {
+            font-size: 5rem;
+            width: 60vw;
+            min-width: 700px;
+            margin: auto;
+            line-height: 1.5;
+            b {
+                text-decoration: underline;
+            }
+        }
+    }
+    .container {
+        background-color: var(--color-background);
+        position: relative;
+        /* padding: 5rem 0; */
+        .gap {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 5rem 6rem;
+        }
+    }
+
+    .container.container-bg-image {
+        &::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: url("https://websitedemos.net/language-tutors-02/wp-content/uploads/sites/700/2020/09/bg-overlay-01-free-img.png");
+            opacity: .05;
+            z-index: 0;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+        }
+        &.right::before {
+            transform: scaleX(-1) scaleY(-1);
+        }
+    }
+    
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    .courses {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        margin-top: -75px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 3rem;
+        
+        .course {
+            margin: auto;
+            width: 100%;
+            min-width: 240px;
+            max-width: 300px;
+            height: 200px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+
+            .class {
+                width: fit-content;
+                padding: .5rem 1rem;
+                margin: 0 auto;
+                margin-top: 2rem;
+                border-radius: 3px;
+                border: 1px solid var(--color-primary);
+                color: var(--color-primary);
+            }
+            .course-name {
+                font-size: 1.5rem;
+                height: fit-content;
+            }
+
+            .course-blob {
+                opacity: 0;
+                transition: all .2s ease-in-out;
+            }
+
+            &:hover {
+                scale: 1.02;
+                .course-blob {
+                    opacity: 1;
+                }   
+            }
+        }
+        
+        .rating-stars {
+            font-size: 1rem;
+        }
+    }
+
+    .works-step-container {
+        max-width: 400px;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: space-around;
+        padding: 4rem 0;
+
+        .step-card {
+            display: flex;
+            gap: 40px;
+
+            .step-count {
+                display: flex;
+                position: relative;
+                z-index: 1;
+                margin-left: -50px;
+                font-size: 3rem;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                flex-shrink: 0;
+                align-items: center;
+                justify-content: center;
+                color: var(--color-primary);
+                font-weight: 900;
+            }
+
+            .step-content {
+                display: grid;
+                gap: 1rem;
+
+                .header {
+                    font-size: 2rem;
+                }
+                p {
+                    font-size: 1rem;
+                    color: var(--color-info);
+                }
+            }
+        }
+    }
+
+    #qualities {
+        .item-container {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 3rem;
+
+            > div {
+                display: grid;
+                gap: 2.5rem;
+                flex: 1;
+                min-width: 250px;
+            }
+
+            .icon {
+                font-size: 1rem;
+                color: var(--color-primary);
+                border-radius: 99px;
+                width: 3rem;height: 3rem;
+                border: 1px solid var(--color-primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .quality-title {
+                font-size: 1.5rem;
+            }
+            .desc {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    #us .gap  {
+        > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .flex-container {
+            gap: 2rem;
+        }
+    }
+    #why-us {
+        padding-right: 200px;
+        h3 {
+            font-size: 2rem;
+        }
+    }
+
+    #testimonials {
+        .testimonial-container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+
+            .testimonial-item .card {
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                padding: 2rem;
+            }
+
+            .text {
+                font-size: 1.2rem;
+                text-align: center;
+                line-height: 1.8;
+                padding: 0 1rem;
+                width: 100%;
+            }
+
+            .user-img {
+                height: 65px;
+                width: 65px;
+                border-radius: 100px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .user-name {font-size: 1rem;letter-spacing: 1px;}
+        }
+    }
+
+    @media (max-width: 900px) {
+        .tagline {
+            > div {
+            }
+            h1 {
+                font-size: 3rem;
+                min-width: 300px;
+                width: auto;
+            }
+        }
+        .container {
+            .gap {
+                padding: 3rem 1rem;
+            }
+        }
+        .works-step-container {
+            margin: auto;
+            .step-card {
+                gap: 1rem;
+                .step-count {
+                    width: 50px;
+                    height: 50px;
+                    margin: 0;
+                    font-size: 2rem;
+                }
+            }
+        }
+        #why-us {
+            padding: 0;
+        }
+
+        #us .gap {
+            > div {
+                grid-template-columns: 1fr;
+                row-gap: 4rem;
+                margin-top: 2rem;
+            }
+        }
+    }
+    @media (max-width:450px) {
+        .tagline {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+    }
+</style>
+
+
+<div id="content">
+    <div class="background-image"></div>
+    <div class="tagline">
+        <div>
+            <p style="color: white;">In look for home tuitions?</p>
+            <div>
+                <h1 style="font-weight: 100;">Start <b>learning</b> today with <b>the best</b> tutors!</h1>
+            </div>
+            <i class="fa-regular fa-circle-down" style="margin-top: 10rem;font-size: 2rem;"></i>
+        </div>
+    </div>
+
+    <div class="container container-bg-image" id="courses" style="padding-top: 0;">
+        <div class="gap" style="display: flex;flex-direction: column;gap: 100px;padding-top: 0;">
+            <div class="courses">
+                {% for course in courses %}
+                <div class="course card">
+                    <div class="flex-container">
+                        <div class="class">Classes {{course.range}}</div>
+                        <div class="course-name">{{course.name}}</div>
+                        <div class="rating-stars" style="--fraction:{{course.rating}};--total:5;">
+                            <span class="filled-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            <span class="empty-stars">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="courses-blob outline" style="border-radius: 99px;padding: 1.2rem 3rem;font-size: 1rem;">
+                Show All
+                &nbsp;
+                <div class="fa fa-plus"></div>
+            </button>
+        </div>
+    </div>
+    <div class="container" id="how-it-all-works">
+        <div class="gap">
+            <div class="flex-container" style="flex-direction: row;gap: 1rem;justify-content: space-around;width: 100%;flex-wrap: wrap;">
+                <div style="margin-top: 100px;font-size: 1.2rem;">
+                    <h2 style="font-size: 3rem;width: 300px;margin-bottom: 1rem;">How it all works</h2>
+                    <p>Personalized learning, right at your doorstep.</p>
+                    <div style="border: .5px solid rgba(0, 0, 0, 0.4);width: 50px;margin-top: 1.2rem;"></div>
+                </div>
+                <div class="flex-container" style="flex-direction: row;flex-wrap: wrap;justify-content: center;">
+                    <div style="border-radius: 20px; overflow: hidden;min-width: 300px;width: 25vw;max-height: 650px;box-shadow: var(--box-shadow);">
+                        <img src="{% static 'images/bg-05-free-img.jpg' %}" alt="" style="object-fit: cover;width: 100%;height: 100%;filter: brightness(60%);">
+                    </div>
+                    <div class="works-step-container">
+                        <div class="step-card">
+                            <div class="step-count card">1</div>
+                            <div class="step-content">
+                                <div class="header">Find the right tutor</div>
+                                <p>Tell us what you need - we'll match you with a skilled tutor who fits your goals and schedule perfectly.</p>
+                            </div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-count card">2</div>
+                            <div class="step-content">
+                                <div class="header">Schedule your sessions</div>
+                                <p>Pick the days and times that work best for you. We're all about flexibility!.</p>
+                            </div>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-count card">3</div>
+                            <div class="step-content">
+                                <div class="header">Begin your learning journey</div>
+                                <p>Start learning, growing, and mastering new skills with full support every step of the way.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="qualities">
+        <div class="gap">
+            <div class="item-container">
+                <div>
+                    <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="quality-title">Expert Tutors</div>
+                    <p class="desc">Experienced tutors who know their stuff — matched to your learning goals.</p>
+                </div>
+                <div>
+                    <div class="icon"><i class="fa-solid fa-people-arrows"></i></div>
+                    <div class="quality-title">Personalized Matching</div>
+                    <p class="desc">Tell us what you need — we'll personally connect you to the right tutor.</p>
+                </div>
+                <div>
+                    <div class="icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <div class="quality-title">Pay Per Lesson</div>
+                    <p class="desc">Flexible payment — pay only for the lessons you book.</p>
+                </div>
+                <div>
+                    <div class="icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <div class="quality-title">Affordable Pricing</div>
+                    <p class="desc">Great tutoring shouldn't break the bank — quality help at the right price.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container container-bg-image right" id="us">
+        <div class="gap">
+            <div>
+                <div id="why-us" class="flex-container">
+                    <p style="font-size: 1rem;">Why us</p>
+                    <h3>Get a home tutor or online classes anywhere, anytime!</h3>
+                    <p style="font-size: 1rem;">Unlock your potential with flexible classes, personalized tutor matches, and support that moves at your pace.</p>
+
+                    <div style="display: flex;gap: 2rem;">
+                        <i class="fa-solid fa-arrow-right text-primary" style="font-size: 2rem;rotate: 45deg;"></i>
+                        <div>
+                            <h4 style="font-size: 1.5rem;font-weight: 400;">Tailored Learning Plans</h4>
+                            <p style="font-size: 1rem;">Every learner is unique. We build your journey around your goals.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex;gap: 2rem;">
+                        <i class="fa-solid fa-arrow-right text-primary" style="font-size: 2rem;rotate: 45deg;"></i>
+                        <div>
+                            <h4 style="font-size: 1.5rem;font-weight: 400;">Access to Top Tutors</h4>
+                            <p style="font-size: 1rem;">Get expert help when you need it — not when the internet feels like it.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex;gap: 2rem;">
+                        <i class="fa-solid fa-arrow-right text-primary" style="font-size: 2rem;rotate: 45deg;"></i>
+                        <div>
+                            <h4 style="font-size: 1.5rem;font-weight: 400;">Anytime, Anywhere Access</h4>
+                            <p style="font-size: 1rem;">Every learner is unique. We build your journey around your goals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="about-us" class="flex-container">
+                    <p style="font-size: 1rem;">About us</p>
+                    <h2 style="font-size: 3.5rem;">" We prepare you to achieve your goals with professional tutors. "</h2>
+                    <p style="font-weight: bold;color: var(--color-dark);font-size: 1rem;">Our mission is simple: real tutors, real support, real results. We connect passionate learners with professional tutors to unlock new opportunities — one conversation at a time.</p>
+                    <a href="{% url 'about-us' %}">
+                        <button class="outline" style="border-radius: 99px;padding: 1rem 2rem;">
+                        Read more
+                        &nbsp;
+                        <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="testimonials">
+        <div class="gap">
+            <div class="testimonial-container">
+                <div class="flex-container" style="justify-content: center;">
+                    <h2 class="big-text-3">Testimonials</h2>
+                </div>
+                {% for review in reviews %}
+                <div class="testimonial-item">
+                    <div class="card flex-container">
+                        <div class="score big-text-2" style="text-align: center;">{{review.rating}}/5</div>
+                        <div class="rating-stars" style="--fraction:{{review.rating}};--total:5;">
+                            <span class="filled-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            <span class="empty-stars">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="text">{{review.text|truncatechars:100}}</p>
+                        <div class="user-img">
+                            <img src="{{review.picture.url}}" alt="">
+                        </div>
+                        <p class="user-name">{{review.name}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

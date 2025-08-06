@@ -1,0 +1,101 @@
+{% load static %}
+
+<style>
+    nav {
+        .gap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6rem;
+            height: 100%;
+        }
+        .primary-menu {
+            display: flex;
+            color: white;
+            
+            .hide-side-menu {
+                display: none;
+            }
+
+            .menu-item {
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
+                height: fit-content;
+                color: white;
+            }
+        }
+        .nav-side-menu {
+            display: none;
+            color: white;
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width:900px) {
+        nav {
+            .gap {
+                padding: 1rem;
+            }
+            .primary-menu {
+                flex-wrap: wrap;
+            }
+        }
+    }
+    @media (max-width:550px) {
+        nav {
+            position: relative;
+            z-index: 99;
+
+            .nav-side-menu {
+                display: block;
+            }
+            
+            .primary-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 0;
+                right: 100%;
+                background-color: var(--color-white);
+                width: 100vw;
+                padding: 1rem;
+                transition: all .3s ease-in-out;
+                
+                .menu-item {
+                    color: var(--color-dark);
+                }
+
+                .hide-side-menu {
+                    display: block;
+                    width: fit-content;
+                    margin-left: auto;
+                    cursor: pointer;
+                    font-size: 2rem;
+                    padding: .5rem;
+                }
+
+                &.active {
+                    right: 0;
+                }
+            }
+        }
+    }
+</style>
+
+<nav style="height: 100px;display: block;background-color: rgba(0, 0, 0, 0.4);">
+    <div class="gap">
+        <div class="logo" style="width: 90px;height: 90px;">
+            <img src="{% static 'images/logo.png' %}" style="width: 100%;height: 100%;object-fit: cover;" alt="">
+        </div>
+        <div class="nav-side-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="primary-menu" id="nav-menu">
+            <div class="menu-item hide-side-menu" id="close-nav-side"><i class="fa-solid fa-circle-xmark"></i></div>
+            <a class="menu-item" href="{% url 'home' %}"><div>Home</div></a>
+            <a class="menu-item" href="{% url 'courses' %}"><div>Courses</div></a>
+            <a class="menu-item" href="#contact-us"><div>Contact Us</div></a>
+            <a class="menu-item" href="{% url 'about-us' %}"><div>About Us</div></a>
+            <div id="nav-open-btn" class="menu-item reg-open-btn" style="border-radius: 99px;background-color: var(--color-primary);margin-left: .5rem;cursor: pointer;">Register Now</div>
+        </div>
+    </div>
+</nav>
