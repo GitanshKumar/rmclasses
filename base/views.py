@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-
 from .models import Course, Review, Standard, Registration
 
 # Create your views here.

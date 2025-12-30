@@ -1,6 +1,18 @@
 from django.db import models
+from supabase import create_client
+from dotenv import load_dotenv
+import os
 
-# Create your models here.
+load_dotenv()
+
+def existsThenDelete(name):
+    supabase = create_client(os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_KEY"))
+    res = supabase.storage.from_('files').list(path=os.path.dirname(name))
+    
+    if any(file['name'] == os.path.basename(name) for file in res):
+        supabase.storage.from_('files').remove(name)
+
+
 class Registration(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
@@ -33,7 +45,18 @@ class Course(models.Model):
         Returns a string representing the continuous range of class levels, e.g., "6-12".
         """
         # Extract numeric levels and sort
-        levels = sorted(list(map(int, self.standards.values_list('name', flat=True))))
+        numeric_levels = []
+        text_levels = []
+
+        for val in self.standards.values_list('name', flat=True):
+            try:
+                numeric_levels.append(int(val))
+            except (ValueError, TypeError):
+                return val
+                text_levels.append(val)
+        
+
+        levels = sorted(numeric_levels)
 
         if not levels:
             return ''
@@ -64,12 +87,17 @@ class Course(models.Model):
     def __str__(self):
         return f"{self.name} {self.courseID}"
 
+def nameAndOverwriteReviewImage(instance, filename):
+    name = ('profile/' + instance.name + str(instance.id) + ".jpg").replace(" ", "_")
+    existsThenDelete(name)
+    return name
+
 class Review(models.Model):
     name = models.CharField(max_length=100)
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     rating = models.SmallIntegerField()
-    picture = models.ImageField(null=True, blank=True, default="profile/default user.png", upload_to="profile/")
+    picture = models.ImageField(null=True, blank=True, default="profile/default_user.png", upload_to=nameAndOverwriteReviewImage)
     
     def __str__(self):
         return self.name

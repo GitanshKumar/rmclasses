@@ -166,12 +166,13 @@ Courses
     <div class="container">
         <div class="gap">
             <div class="courses">
+                {% for course in courses %}
                 <div class="course card">
                     <div class="flex-container">
-                        <div class="class">Classes 6-10</div>
-                        <div class="course-name">Math</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
+                        <div class="class">Classes {{course.class_range}}</div>
+                        <div class="course-name">{{course.name}}</div>
+                        <div class="rating-stars" style="--fraction:{{course.rating}};--total:5;">
+                            <span class="filled-stars">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
@@ -191,181 +192,7 @@ Courses
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 6-10</div>
-                        <div class="course-name">Science</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 6-10</div>
-                        <div class="course-name">Social Studies</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 6-10</div>
-                        <div class="course-name">English</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 6-10</div>
-                        <div class="course-name">Geography</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 11-12</div>
-                        <div class="course-name">Accounts</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 11-12</div>
-                        <div class="course-name">Math</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
-                <div class="course card">
-                    <div class="flex-container">
-                        <div class="class">Classes 11-12</div>
-                        <div class="course-name">Economics</div>
-                        <div class="rating-stars">
-                            <span class="filled-stars" style="--percent-stars:90%;">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                            <span class="empty-stars">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="course-blob outline" style="font-size: 1rem;padding: 0 1rem;">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
