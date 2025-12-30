@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/wsgi.py",
+      "src": "home_tutor/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/wsgi.py"
+      "dest": "home_tutor/wsgi.py"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "home_tutor.settings",
-    "PYTHON_VERSION": "3.10"
-  }
+  ]
 }
