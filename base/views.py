@@ -9,7 +9,7 @@ def redirectCurrent(request):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 def home(request):
-    courses = Course.objects.prefetch_related('standards').all()
+    courses = Course.objects.prefetch_related('standards').all().order_by("orderID")[:8]
     classes = Standard.objects.all()
     reviews = Review.objects.order_by('-rating')[:5]
 

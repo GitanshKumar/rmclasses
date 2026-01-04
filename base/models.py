@@ -39,6 +39,7 @@ class Course(models.Model):
     rating = models.FloatField(null=True, blank=True)
     courseID = models.SmallIntegerField()
     standards = models.ManyToManyField(Standard, related_name="courses")
+    orderID = models.SmallIntegerField(default=0)
 
     def class_range(self):
         """

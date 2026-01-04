@@ -14,9 +14,10 @@ Home
     <div class="background-image"></div>
     <div class="tagline">
         <div>
-            <p style="color: white;">In look for home tuitions?</p>
+            <p style="color: white;">Expert Home Tuitions & Coaching for Academic Excellence</p>
             <div>
-                <h1 style="font-weight: 100;">Start <b>learning</b> today with <b>the best</b> tutors!</h1>
+                <h1 style="font-weight: 100;">Master Your <b>Future</b> with <b>RM Classes</b></h1>
+                <button style="font-size: 1.4rem;margin-top: 1rem;">Book a Free Demo Class</button>
             </div>
             <i class="fa-regular fa-circle-down" style="margin-top: 10rem;font-size: 2rem;"></i>
         </div>
@@ -53,19 +54,19 @@ Home
                 </div>
                 {% endfor %}
             </div>
-            <button class="courses-blob outline" style="border-radius: 99px;padding: 1.2rem 3rem;font-size: 1rem;">
+            <a href="{% url 'courses' %}" class="courses-blob outline" style="border-radius: 99px;padding: 1.2rem 3rem;font-size: 1rem;">
                 Show All
                 &nbsp;
                 <div class="fa fa-plus"></div>
-            </button>
+            </a>
         </div>
     </div>
     <div class="container" id="how-it-all-works">
         <div class="gap">
             <div class="flex-container" style="flex-direction: row;gap: 1rem;justify-content: space-around;width: 100%;flex-wrap: wrap;">
                 <div style="margin-top: 100px;font-size: 1.2rem;">
-                    <h2 style="font-size: 3rem;width: 300px;margin-bottom: 1rem;">How it all works</h2>
-                    <p>Personalized learning, right at your doorstep.</p>
+                    <h2 style="font-size: 3rem;margin-bottom: 1rem;">Why RM Classes is Your Path to Academic Success!</h2>
+                    <p>We understand that every student learns differently. That's why RM Classes offers personalised coaching and home tuitions tailored to your unique learning style. With verified, experienced tutors and a proven track record of academic excellence, we transform educational challenges into opportunities for growth and achievement.</p>
                     <div style="border: .5px solid rgba(0, 0, 0, 0.4);width: 50px;margin-top: 1.2rem;"></div>
                 </div>
                 <div class="flex-container" style="flex-direction: row;flex-wrap: wrap;justify-content: center;">
@@ -76,22 +77,22 @@ Home
                         <div class="step-card">
                             <div class="step-count card">1</div>
                             <div class="step-content">
-                                <div class="header">Find the right tutor</div>
-                                <p>Tell us what you need - we'll match you with a skilled tutor who fits your goals and schedule perfectly.</p>
+                                <div class="header">Verified Tutors</div>
+                                <p>Experienced educators with proven track records in their subject areas.</p>
                             </div>
                         </div>
                         <div class="step-card">
                             <div class="step-count card">2</div>
                             <div class="step-content">
                                 <div class="header">Schedule your sessions</div>
-                                <p>Pick the days and times that work best for you. We're all about flexibility!.</p>
+                                <p>1-on-1 home tuitions designed around your learning pace and style.</p>
                             </div>
                         </div>
                         <div class="step-card">
                             <div class="step-count card">3</div>
                             <div class="step-content">
-                                <div class="header">Begin your learning journey</div>
-                                <p>Start learning, growing, and mastering new skills with full support every step of the way.</p>
+                                <div class="header">Proven Results</div>
+                                <p>Regular assessments and performance tracking ensure continuous improvement.</p>
                             </div>
                         </div>
                     </div>
@@ -125,7 +126,39 @@ Home
             </div>
         </div>
     </div>
-
+    <div class="container" id="commerce-excellence-programme">
+        <div class="gap">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;">Commerce Excellence Programmes</h2>
+            <div style="display: grid;grid-template-columns: 1fr 2fr; gap: 2rem;">
+                <div>
+                    <p style="font-size: 1.5rem;">RM Classes is your trusted partner for mastering commerce subjects. Our expert tutors bring years of teaching experience and deep subject knowledge to help students excel in Accounts, Economics, Business Studies, and Statistics.</p>
+                    <br>
+                    <p style="font-size: 1.5rem;">Whether you're preparing for board exams or building foundational skills, our comprehensive approach ensures conceptual clarity and practical application.</p>
+                </div>
+                <div style="width: 100%;height: 500px;overflow: hidden;border-radius: 15px;">
+                    <img style="object-fit: cover;width: 100%;height: 100%;" src="https://mbtvcwdhgaznnbsqslvz.supabase.co/storage/v1/object/public/files/assets/image_2026-01-05_000736483.png" alt="">
+                </div>
+            </div>
+            <div class="subs" style="display: flex;gap: 2rem;margin: 2rem 0;">
+                <div>
+                    <h3>Accounts</h3>
+                    <p class="desc">Master double-entry bookkeeping, financial statements, and ratio analysis with our step-by-step approach</p>
+                </div>
+                <div>
+                    <h3>Economics</h3>
+                    <p class="desc">Understand micro and macroeconomics principles, market dynamics, and economic policies comprehensively.</p>
+                </div>
+                <div>
+                    <h3>Business Studies</h3>
+                    <p class="desc">Learn management principles, marketing strategies, and business operations for real-world success.</p>
+                </div>
+                <div>
+                    <h3>Statistics</h3>
+                    <p class="desc">Build confidence in data analysis, probability, and statistical methods through practical problem-solving.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container container-bg-image right" id="us">
         <div class="gap">
             <div>
