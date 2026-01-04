@@ -15,22 +15,24 @@ class SupabaseStorage(Storage):
         return None
 
     def _save(self, name, content):
-        
-        with content.open('rb') as file:
-            file_data = file.read()
-        
-        resp = self.supabase.storage.from_('images').upload(name, file_data, {'content-type': 'image/jpeg'})
-        if resp.status_code != 200:
-            raise Exception("Failed to upload file to Supabase Storage")
+        file_data = content.read()
+
+        try:
+            self.supabase.storage.from_("files").upload(
+                path=name,
+                file=file_data,
+            )
+        except Exception as e:
+            raise Exception(f"Supabase upload failed: {e}")
 
         return name
 
     def url(self, name):
-        return self.supabase.storage.from_('images').get_public_url(name)
+        return self.supabase.storage.from_('files').get_public_url(name)
     
     def exists(self, name):
         try:
-            res = self.supabase.storage.from_('images').list(path=os.path.dirname(name))
+            res = self.supabase.storage.from_('files').list(path=os.path.dirname(name))
             return any(file['name'] == os.path.basename(name) for file in res)
         except Exception as e:
             print(f"Error checking if file exists: {str(e)}")

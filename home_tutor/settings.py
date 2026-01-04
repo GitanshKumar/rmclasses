@@ -142,10 +142,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
-DEFAULT_FILE_STORAGE = 'base.custom_storage.SupabaseStorage'
+STORAGES = {
+    "default": {
+        "BACKEND": "base.custom_storage.SupabaseStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # RECAPTCHA
 RECAPTCHA_PUBLIC_KEY = "6LcnMhArAAAAAJnnXJnGTIzpqcmYYqXAk_OucW3N"
