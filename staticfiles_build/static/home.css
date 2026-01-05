@@ -162,6 +162,8 @@ p {
             justify-content: center;
             color: var(--color-primary);
             font-weight: 900;
+            box-shadow: 0 0 0 0px transparent;
+            transition: all 0.3s;
         }
 
         .step-content {
@@ -170,10 +172,21 @@ p {
 
             .header {
                 font-size: 2rem;
+                transition: all 0.3s;
             }
             p {
                 font-size: 1rem;
                 color: var(--color-info);
+            }
+        }
+
+        &:hover {
+            .header {
+                scale: 1.05;
+                color: var(--color-primary);
+            }
+            .step-count {
+                box-shadow: 0 0 0 5px var(--color-primary);
             }
         }
     }
@@ -185,12 +198,26 @@ p {
         width: 100%;
         flex-wrap: wrap;
         gap: 3rem;
+        border: 1px;
 
         > div {
             display: grid;
             gap: 2.5rem;
             flex: 1;
             min-width: 250px;
+            border: 1px solid var(--color-illustraion-shadow);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+
+            &:hover {
+                border-color: var(--color-primary);
+
+                .quality-title {
+                    scale: 1.05;
+                    color: var(--color-primary);
+                }
+            }
         }
 
         .icon {
@@ -205,6 +232,7 @@ p {
         }
         .quality-title {
             font-size: 1.5rem;
+            transition: all 0.3s;
         }
         .desc {
             font-size: 1rem;
@@ -223,9 +251,47 @@ p {
 }
 
 #commerce-excellence-programme {
-    .subs h3 {
+    .subs {
+        display: flex;
+        gap: 2rem;
+        margin: 2rem 0;
+
+        h3 {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+    }
+
+    .cep-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        
+        p {font-size: 1.5rem;}
+    }
+}
+
+#rm-advantage {
+    .gap {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        .card:last-child {
+            grid-column: 1 / -1;   /* span both columns */
+            justify-self: center; /* center the card */
+            /* max-width: 500px; */
+        }
+    }
+    .title {
         font-size: 2rem;
-        margin: 1rem 0;
+        margin-bottom: 1rem;
     }
 }
 
@@ -317,4 +383,20 @@ p {
         }
     }
 
+    #commerce-excellence-programme {
+        .subs {
+            flex-wrap: wrap;
+        }
+        .cep-container {
+            grid-template-columns: 1fr;
+
+            p {font-size: 1rem;}
+        }
+    }
+
+    #rm-advantage {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
 }
